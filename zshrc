@@ -214,5 +214,7 @@ fi
 # History search
 # Pressing [PAGE UP] or [PAGE DOWN] will only show previous commands
 # that start the same way
-[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
-[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
+[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    \
+	history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  \
+	history-beginning-search-forward
