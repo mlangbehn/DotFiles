@@ -12,6 +12,16 @@
 #                                                                              #
 ################################################################################
 
+# cp should prompt before overwriting an existing file
+# Using -f or --force will ignore this option
+alias cp='cp -i'
+
+# df should always be human readable
+alias df='df -h'
+
+# du should always be human readable
+alias du='du -h'
+
 # 'ee' should open the default editor
 alias ee='$EDITOR'
 
@@ -21,8 +31,17 @@ alias emacs='emacs -nw'
 # grep should always use color
 alias grep='grep --color=always'
 
-# ls should always use color
-alias ls='ls --color=always'
+# ls should do two things:
+# 	always use color
+# 	always print file sizes in human readable format
+alias ls='ls -h --color=always'
+
+# mv should prompt before overwriting an existing file
+# Using -f or --force will ignore this option
+alias mv='mv -i'
+
+# 'pp' should open the default ager
+alias pp='$PAGER'
 
 
 ################################################################################
@@ -30,9 +49,6 @@ alias ls='ls --color=always'
 #                             General Settings                                 #
 #                                                                              #
 ################################################################################
-
-# autocd causes zsh to change directory when a path is given without a command
-unsetopt autocd
 
 # Enable error beeping
 setopt beep
@@ -66,15 +82,27 @@ setopt notify
 # Alert if command fails
 setopt printexitvalue
 
+
+# Report about cpu-/system-/user-time of command if running longer than
+# 5 seconds
+REPORTTIME=5
+
+################################################################################
+#                                                                              #
+#                             Completion System                                #
+#                                                                              #
+################################################################################
+
 # Enable the new completion system
 zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit
 compinit
 
+# Enable autocompletion menu
+zstyle ':completion:*' menu select
 
-# Report about cpu-/system-/user-time of command if running longer than
-# 5 seconds
-REPORTTIME=5
+#Enable autocompletion of aliases
+setopt completealiases
 
 
 ################################################################################
@@ -92,11 +120,14 @@ if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
 fi
 function chpwd() {
     emulate -L zsh
-    ls --color=always
+    ls
     print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
 }
 
 DIRSTACKSIZE=20
+
+# autocd causes zsh to change directory when a path is given without a command
+unsetopt autocd
 
 # Changing Directories should behave as pushd
 setopt autopushd
@@ -176,7 +207,6 @@ bindkey '^[[1;5D' emacs-backward-word
 typeset -A key
 
 key[Home]=${terminfo[khome]}
-
 key[End]=${terminfo[kend]}
 key[Insert]=${terminfo[kich1]}
 key[Delete]=${terminfo[kdch1]}
@@ -197,6 +227,14 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
 [[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
 
+# History Search
+# Pressing [PAGE UP] or [PAGE DOWN] will only show previous commands
+# that start the same way
+[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    \
+         history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  \
+         history-beginning-search-forward
+
 # Verify the terminal is in application mode when zle is active
 # Only then are the values from $terminfo valid
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
@@ -209,12 +247,3 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
-
-
-# History search
-# Pressing [PAGE UP] or [PAGE DOWN] will only show previous commands
-# that start the same way
-[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    \
-	history-beginning-search-backward
-[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  \
-	history-beginning-search-forward
