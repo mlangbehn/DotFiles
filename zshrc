@@ -25,6 +25,9 @@ alias du='du -h'
 # 'ee' should open the default editor
 alias ee='$EDITOR'
 
+# free should always be human readable
+alias free='free -h'
+
 # Emacs should open in the command line, rather than a new GUI window
 alias emacs='emacs -nw'
 
@@ -40,7 +43,7 @@ alias ls='ls -h --color=always'
 # Using -f or --force will ignore this option
 alias mv='mv -i'
 
-# 'pp' should open the default ager
+# 'pp' should open the default pager
 alias pp='$PAGER'
 
 
@@ -56,7 +59,7 @@ setopt beep
 # Use zsh's enhanced globs
 setopt extended_glob
 
-# Whenever a command competion is attempted,
+# Whenever a command completion is attempted,
 # ensure the command path is hashed first
 setopt hash_list_all
 setopt completeinword
@@ -67,7 +70,7 @@ setopt longlistjobs
 # Don't warn about backgrounded jobs when exiting
 setopt nocheckjobs
 
-# * shouldn't match dotfiles
+# * shouldn't match dot-files
 setopt noglobdots
 
 # Don't send SIGHUP to background processes when the shell exits
@@ -83,7 +86,7 @@ setopt notify
 setopt printexitvalue
 
 
-# Report about cpu-/system-/user-time of command if running longer than
+# Report about CPU-/system-/user-time of command if running longer than
 # 5 seconds
 REPORTTIME=5
 
@@ -98,10 +101,10 @@ zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit
 compinit
 
-# Enable autocompletion menu
+# Enable auto completion menu
 zstyle ':completion:*' menu select
 
-#Enable autocompletion of aliases
+# Enable auto completion of aliases
 setopt completealiases
 
 
@@ -126,7 +129,8 @@ function chpwd() {
 
 DIRSTACKSIZE=20
 
-# autocd causes zsh to change directory when a path is given without a command
+# Change directory when a path is given without a command
+# (NOTE: this is disabled)
 unsetopt autocd
 
 # Changing Directories should behave as pushd
@@ -135,7 +139,7 @@ setopt autopushd
 # Ignore duplicates in the directory stack
 setopt pushdignoredups
 
-# Supress output from pushd
+# Suppress output from pushd
 setopt pushdsilent
 
 
@@ -149,7 +153,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
-# Apend history list to the history file
+# Append history list to the history file
 # Required for share_history
 setopt append_history
 
@@ -194,14 +198,14 @@ SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color ($fg[blue]Y
 #                                                                              #
 ################################################################################
 
-# Use emacs keybindings
+# Use emacs key bindings
 bindkey -e
 
 # Enable CTRL + LEFT and CTRL + RIGHT to move cursor word by word
 bindkey '^[[1;5C' emacs-forward-word
 bindkey '^[[1;5D' emacs-backward-word
 
-# From the Arch Wiki:
+# From the Arch wiki:
 # Create a zkbd compatible hash
 # To add other keys to this hash, see: man 5 terminfo
 typeset -A key
