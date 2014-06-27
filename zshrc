@@ -8,6 +8,22 @@
 
 ################################################################################
 #                                                                              #
+#                          Environment Variables                               #
+#                                                                              #
+################################################################################
+
+# NOTE: These could just as easily be put in ~/.zshenv. I put them in ~/.zshrc
+#       so everything is easy to find in one file.
+
+# Set the default editor
+export EDITOR=vim
+
+# Set the default pager
+export PAGER=vimpager
+
+
+################################################################################
+#                                                                              #
 #                                 Aliases                                      #
 #                                                                              #
 ################################################################################
@@ -23,6 +39,7 @@ alias df='df -h'
 alias du='du -h'
 
 # 'ee' should open the default editor
+# Don't forget to set the editor in ~/.zshenv
 alias ee='$EDITOR'
 
 # free should always be human readable
@@ -34,6 +51,10 @@ alias emacs='emacs -nw'
 # grep should always use color
 alias grep='grep --color=always'
 
+# less should open the default pager
+# Don't forget to set the pager in ~/.zshenv
+alias less='$PAGER'
+
 # ls should do two things:
 # 	always use color
 # 	always print file sizes in human readable format
@@ -44,6 +65,7 @@ alias ls='ls -h --color=always'
 alias mv='mv -i'
 
 # 'pp' should open the default pager
+# Don't forget to set the pager in ~/.zshenv
 alias pp='$PAGER'
 
 
@@ -199,7 +221,9 @@ SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color ($fg[blue]Y
 ################################################################################
 
 # Use emacs key bindings
-bindkey -e
+#bindkey -e
+# Use vi key bindings
+bindkey -v
 
 # Enable CTRL + LEFT and CTRL + RIGHT to move cursor word by word
 bindkey '^[[1;5C' emacs-forward-word
