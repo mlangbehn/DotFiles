@@ -129,6 +129,11 @@ zstyle ':completion:*' menu select
 # Enable auto completion of aliases
 setopt completealiases
 
+# If Arch Linux tool 'pkgfile' is installed, enable it
+if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
+    source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
+
 
 ################################################################################
 #                                                                              #
@@ -138,10 +143,14 @@ setopt completealiases
 
 # Changing directory behaves as pushd
 # Run 'ls' after changing directories
-DIRSTACKFILE="$HOME/.cache/zsh/dirs"
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+DIRSTACKDIR="$HOME/.cache/zsh"
+if [ ! -d $DIRSTACKDIR ]; then
+    mkdir -p $DIRSTACKDIR
+fi
+DIRSTACKFILE="$DIRSTACKDIR/dirs"
+if [ -f $DIRSTACKFILE ] && [ $#dirstack -eq 0 ]; then
   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-  [[ -d $dirstack[1] ]] && cd $dirstack[1]
+  [ -d $dirstack[1] ] && cd $dirstack[1]
 fi
 function chpwd() {
     emulate -L zsh
@@ -201,7 +210,23 @@ setopt histignorespace
 
 autoload -U promptinit && promptinit
 autoload -U colors && colors
-PROMPT="%{$fg[cyan]%}%B[%n@%m %~]%#%b "
+
+# Set color of username to red is user is root, and cyan otherwise
+if [ `id -u` = 0 ]; then
+    NAME_COLOR=red
+else
+    NAME_COLOR=cyan
+fi
+
+# Set color of hostname to magenta if connected via ssh, and green otherwise
+if [ -n "$SSH_CLIENT" ]; then
+    HOST_COLOR=magenta
+else
+    HOST_COLOR=green
+fi
+
+# Display prompt, using NAME_COLOR, HOST_COLOR, and yellow for working directory
+PROMPT="%{$fg[white]%}%B[%{$fg[$NAME_COLOR]%}%n%{$fg[white]%}@%{$fg[$HOST_COLOR]%}%m %{$fg[yellow]%}%~%{$fg[white]%}]%#%b "
 
 
 ################################################################################
