@@ -9,6 +9,12 @@ if [ -f $HOME/.zshrc ]; then
     cp $HOME/.zshrc $HOME/.zshrc.bak
 fi
 curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/zshrc > $HOME/.zshrc
+echo
+echo "Changing default shell to zsh, and switching to it."
+echo
+chsh -s `which zsh`
+/usr/bin/env zsh
+. $HOME/.zshrc
 
 # Check for existing ~/.vimrc and back it up if it exists
 if [ -f $HOME/.vimrc ]; then
