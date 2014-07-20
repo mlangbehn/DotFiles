@@ -12,7 +12,7 @@ Installation
 
 To install, run:
 ```
-curl https://github.com/mlangbehn/DotFiles/blob/master/install.sh | /bin/sh
+curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/install.sh | /bin/sh
 ```
 
 License
