@@ -13,6 +13,105 @@ set nocompatible
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                                                              "
+"                              Completion System                               "
+"                                                                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable Omni Completion
+" Requires filetype plugin to be turned on
+set omnifunc=syntaxcomplete#Complete
+
+" Set completion system to use the longest common text, and always show a menu
+set completeopt=longest,menuone
+
+" Set menu color to grey
+:highlight Pmenu ctermbg=grey gui=bold
+
+" Set keys for completion menu
+" [ENTER]             = Select
+" Arrow Keys          = Scroll through options
+" PageUp and PageDown = Jump through options
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+" Setup smart tab completion
+" This enables accessing the completion menu by pressing [TAB]
+function! Smart_TabComplete()
+    let line = getline('.')
+    let substr = strpart(line, -1, col('.')+1)
+    let substr = matchstr(substr, "[^ \t]*$")
+
+    if (strlen(substr)==0)
+        return "\<tab>"
+    endif
+
+    let has_period = match(substr, '\.') != -1
+    let has_slash = match(substr, '\/') != -1
+
+    if (!has_period && !has_slash)
+        return "\<C-X>\<C-P>"
+    elseif ( has_slash )
+        return "\<C-X>\<C-F>"
+    else
+        return "\<C-X>\<C-O>"
+    endif
+endfunction
+
+" Bind [TAB] to call Smart_TabComplete()
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                                                              "
+"                       Previous Session Information                           "
+"                                                                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Tell vim to remember certain things when we exit
+"  '10  :  marks will be remembered for up to 10 previously edited files
+"  "100 :  will save up to 100 lines for each register
+"  :20  :  up to 20 lines of command-line history will be remembered
+"  %    :  saves and restores the buffer list
+"  n... :  where to save the viminfo files
+set viminfo='10,\"100,:20,%,n~/.viminfo
+
+function! ResCur()
+    if line("'\"") <= line("$")
+        normal! g`"
+        return 1
+    endif
+endfunction
+
+augroup resCur
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
+augroup END
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                                                              "
+"                              Search Settings                                 "
+"                                                                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Highlight results
+set hlsearch
+
+" Ignore case
+set ignorecase
+
+" Incremental search -- search as you type
+set incsearch
+
+" Try to be smart about case
+set smartcase
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                                                              "
 "                            Text Formatting                                   "
 "                                                                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -36,11 +135,6 @@ set autoindent
 
 " Lines should be wrapped at 80 columns
 set textwidth=80
-
-" Show matching brackets
-set showmatch
-" Show match for 2 tenths of a second
-set mat=2
 
 " Enable file type plug-ins
 filetype plugin on
@@ -80,24 +174,10 @@ set scrolloff=3
 " Backspace and cursor movements should wrap between lines
 set whichwrap=b,s,h,l,<,>,[,]
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                                                              "
-"                              Search Settings                                 "
-"                                                                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Highlight results
-set hlsearch
-
-" Ignore case
-set ignorecase
-
-" Incremental search -- search as you type
-set incsearch
-
-" Try to be smart about case
-set smartcase
+" Show matching brackets
+set showmatch
+" Show match for 2 tenths of a second
+set mat=2
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
