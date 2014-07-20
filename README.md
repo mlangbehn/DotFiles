@@ -11,6 +11,10 @@ License
 
 The files in this repository are released under the BSD 3-Clause License (see included LICENSE file). If you did not receive a copy of the license with this work, it can be found at: http://mlangbehn.github.io/BSD-3-Clause.html
 
+## Author
+Author: Matt Langbehn  
+Contact: matthew.langbehn@gmail.com
+
 More Information
 ====================
 
@@ -21,7 +25,3 @@ http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 ## zsh
 Official zsh documentation can be found at:  
 http://zsh.sourceforge.net/Doc/Release/zsh_toc.html
-
-## Author
-Author: Matt Langbehn  
-Contact: matthew.langbehn@gmail.com
