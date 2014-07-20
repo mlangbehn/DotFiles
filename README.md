@@ -1,10 +1,19 @@
 Purpose
 ====================
+
 The purpose of this repository is to force me to tidy up my configuration files. Beyond that, having them all in one place I can access from anywhere would be super helpful.
 
 I have never been satisfied with other dotfiles people have published. I have read through a selection of them and used them -- and other documentation -- as templates to base my own off of.
 
 I hope that these files may be useful to others (whether they use my versions, or just use them as reference)!
+
+Installation
+====================
+
+To install, run:
+```
+curl https://github.com/mlangbehn/DotFiles/blob/master/install.sh | /bin/sh
+```
 
 License
 ====================
