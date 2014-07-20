@@ -22,5 +22,6 @@ http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 Official zsh documentation can be found at:  
 http://zsh.sourceforge.net/Doc/Release/zsh_toc.html
 
+## Author
 Author: Matt Langbehn  
 Contact: matthew.langbehn@gmail.com
