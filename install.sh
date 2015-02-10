@@ -1,5 +1,15 @@
 #!/bin/sh
 
+# Check for existing ~/.vimrc and back it up if it exists
+if [ -f $HOME/.vimrc ]; then
+    echo
+    echo "Existing ~/.vimrc found."
+    echo "Backing it up to ~/.vimrc.bak"
+    echo
+    cp $HOME/.vimrc $HOME/.vimrc.bak
+fi
+curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/vimrc > $HOME/.vimrc
+
 # Check for existing ~/.zshrc and back it up if it exists
 if [ -f $HOME/.zshrc ]; then
     echo
@@ -15,13 +25,3 @@ echo
 chsh -s `which zsh`
 /usr/bin/env zsh
 . $HOME/.zshrc
-
-# Check for existing ~/.vimrc and back it up if it exists
-if [ -f $HOME/.vimrc ]; then
-    echo
-    echo "Existing ~/.vimrc found."
-    echo "Backing it up to ~/.vimrc.bak"
-    echo
-    cp $HOME/.vimrc $HOME/.vimrc.bak
-fi
-curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/vimrc > $HOME/.vimrc
