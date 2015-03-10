@@ -133,8 +133,16 @@ set smarttab
 " Indent to the same level as the previous line
 set autoindent
 
-" Lines should be wrapped at 80 columns
-set textwidth=80
+" Lines should be soft-wrapped at 80 columns
+set wrap
+set linebreak
+set nolist
+
+" If par is installed, use it to format text
+"   use 'gq' to reformat, or 'gw' to use vim's built-in formatter
+if executable("par")
+    set formatprg=par\ -w80
+endif
 
 " Enable file type plug-ins
 filetype plugin on
@@ -166,7 +174,11 @@ set autoread
 set ruler
 
 " Enable spell checking
+"   <F1> will turn spell checking off
+"   <F2> will turn spell checking back on
 set spell
+nmap <F1> :set nospell<CR>
+nmap <F2> :set spell<CR>
 
 " Always keep 3 lines above and below the cursor
 set scrolloff=3
@@ -177,7 +189,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 " Show matching brackets
 set showmatch
 " Show match for 2 tenths of a second
-set mat=2
+set matchtime=2
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
