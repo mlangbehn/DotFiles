@@ -141,7 +141,7 @@ set nolist
 " If par is installed, use it to format text
 "   use 'gq' to reformat, or 'gw' to use vim's built-in formatter
 if executable("par")
-    set formatprg=par\ -w80
+    set formatprg=par\ -w72
 endif
 
 " Enable file type plug-ins
