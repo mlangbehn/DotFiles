@@ -53,6 +53,17 @@ alias free='free -h'
 # Emacs should open in the command line, rather than a new GUI window
 alias emacs='emacs -nw'
 
+# Git specific aliases
+#   gc commits and signs with PGP key defined by git config user.signingkey
+#   gl uses an alias set in ~/.gitconfig to format output from git log
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit -S'
+alias gd='git diff'
+alias gl='git hist'
+alias go='git checkout'
+alias gs='git status'
+
 # grep should always use color
 alias grep='grep --color=always'
 
