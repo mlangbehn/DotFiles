@@ -305,15 +305,8 @@ fi
 # Set color of working directory to yellow
 WORKING_DIRECTORY_COLOR=yellow
 
-# Include information about git branch and status
-#   Requires git-prompt.sh from https://github.com/git/git
-setopt PROMPT_SUBST
-source ~/.zsh/git-prompt.sh
-GIT_PS1_SHOWDIRTYSTATE=1
-
 # Display prompt, using NAME_COLOR, HOST_COLOR, and yellow for working directory
 PROMPT="%{$fg[white]%}%B[%{$fg[$NAME_COLOR]%}%n%{$fg[white]%}@%{$fg[$HOST_COLOR]%}%m %{$fg[$WORKING_DIRECTORY_COLOR]%}%~%{$fg[white]%}]%#%b "
-RPROMPT=$'$(__git_ps1 "%s")'
 
 
 ################################################################################
