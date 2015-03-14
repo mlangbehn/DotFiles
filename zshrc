@@ -27,6 +27,9 @@ else
     export PAGER=less
 fi
 
+# Set function path
+fpath=($HOME/.zsh $fpath)
+
 
 ################################################################################
 #                                                                              #
@@ -194,7 +197,7 @@ REPORTTIME=5
 #                                                                              #
 ################################################################################
 
-HISTFILE=~/.histfile
+HISTFILE=$HOME/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
@@ -310,7 +313,7 @@ WORKING_DIRECTORY_COLOR=yellow
 # Include information about git branch and status
 #   Requires git-prompt.sh from https://github.com/git/git
 setopt PROMPT_SUBST
-source ~/.zsh/git-prompt.sh
+source $HOME/.zsh/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
