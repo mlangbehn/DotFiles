@@ -320,6 +320,7 @@ GIT_PS1_SHOWCOLORHINTS=1
 
 # Display prompt, using NAME_COLOR, HOST_COLOR, and yellow for working directory
 PROMPT="%{$fg[white]%}%B[%{$fg[$NAME_COLOR]%}%n%{$fg[white]%}@%{$fg[$HOST_COLOR]%}%m %{$fg[$WORKING_DIRECTORY_COLOR]%}%~%{$fg[white]%}]%#%b "
+RPROMPT=$'$(__git_ps1 "%s")'
 
 
 ################################################################################
