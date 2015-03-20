@@ -174,11 +174,11 @@ set autoread
 set ruler
 
 " Enable spell checking
-"   <F1> will turn spell checking off
-"   <F2> will turn spell checking back on
+"   <F2> will turn spell checking off
+"   <F3> will turn spell checking back on
 set spell
-nmap <F1> :set nospell<CR>
-nmap <F2> :set spell<CR>
+nmap <F2> :set nospell<CR>
+nmap <F3> :set spell<CR>
 
 " Always keep 3 lines above and below the cursor
 set scrolloff=3
@@ -215,3 +215,6 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Added to avoid performance issues due to repeated matching
 autocmd BufWinLeave * call clearmatches()
+
+" <F4> removes all trailing whitespace
+nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
