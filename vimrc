@@ -173,12 +173,10 @@ set autoread
 " Show the cursor position
 set ruler
 
-" Enable spell checking
-"   <F2> will turn spell checking off
-"   <F3> will turn spell checking back on
+" Enable spell checking by default
+"   <F2> will toggle spell checking
 set spell
-nmap <F2> :set nospell<CR>
-nmap <F3> :set spell<CR>
+nmap <F2> :set invspell<CR>
 
 " Always keep 3 lines above and below the cursor
 set scrolloff=3
