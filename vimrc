@@ -133,7 +133,7 @@ set smarttab
 " Indent to the same level as the previous line
 set autoindent
 
-" Set <F3> to toggle indenting
+" Set <F3> to toggle paste mode
 "   This is to be used when pasting from another application, and
 "   prevents autoindent from breaking existing formating.
 "   The second line allows this to work while in insert mode.
