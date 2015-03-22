@@ -133,6 +133,15 @@ set smarttab
 " Indent to the same level as the previous line
 set autoindent
 
+" Set <F3> to toggle indenting
+"   This is to be used when pasting from another application, and
+"   prevents autoindent from breaking existing formating.
+"   The second line allows this to work while in insert mode.
+"   The third like shows the change while in insert mode.
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
+set showmode
+
 " Lines should be soft-wrapped at 80 columns
 set wrap
 set linebreak
