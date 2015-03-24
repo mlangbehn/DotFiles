@@ -116,16 +116,6 @@ set smartcase
 "                                                                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Number of spaces that [TAB] inserts
-set tabstop=4
-
-" Number of spaces that are used for each auto indent
-set shiftwidth=4
-
-" Expand [TAB] to the equivalent number of spaces
-" If a literal tab is preferred, use CTRL-V [TAB]
-set expandtab
-
 " When in front of a line, insert space according to shift width,
 " rather than tab stop
 set smarttab
