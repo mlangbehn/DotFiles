@@ -166,6 +166,9 @@ set background=dark
 " Automatically read changes made to the file from the outside
 set autoread
 
+" Show line numbers
+set number
+
 " Show the cursor position
 set ruler
 
