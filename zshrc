@@ -30,6 +30,12 @@ fi
 # Set function path
 fpath=($HOME/.zsh $fpath)
 
+# If homebrew is installed, set PATH to default to GNU tools
+if [ -f /usr/local/bin/brew ]; then
+	export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+	export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+fi
+
 
 ################################################################################
 #                                                                              #
