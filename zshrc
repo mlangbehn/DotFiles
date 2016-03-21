@@ -43,12 +43,22 @@ fi
 #                                                                              #
 ################################################################################
 
+# If vimcat is installed, use it instead of cat
+if [ -f /usr/bin/vimcat ]; then
+	alias cat='vimcat'
+fi
+
 # cp should prompt before overwriting an existing file
 # Using -f or --force will ignore this option
 alias cp='cp -i'
 
 # df should always be human readable
 alias df='df -h'
+
+# If vimdiff is installed, use it instead of diff
+if [ -f /usr/bin/vimdiff ]; then
+	alias diff='vimdiff'
+fi
 
 # du should always be human readable
 alias du='du -h'
@@ -63,11 +73,10 @@ alias free='free -h'
 alias emacs='emacs -nw'
 
 # Git specific aliases
-#   gc commits and signs with PGP key defined by git config user.signingkey
 #   gl uses an alias set in ~/.gitconfig to format output from git log
 alias ga='git add'
 alias gb='git branch'
-alias gc='git commit -S'
+alias gc='git commit -s'
 alias gd='git diff'
 alias gl='git hist'
 alias go='git checkout'
