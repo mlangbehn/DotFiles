@@ -144,6 +144,10 @@ endif
 filetype plugin on
 filetype indent on
 
+" Specific filetype settings
+autocmd Filetype bash setlocal ts=4 sw=4 expandtab
+autocmd Filetype sh setlocal ts=4 sw=4 expandtab
+
 " Use UTF-8 encoding
 set encoding=utf8
 
