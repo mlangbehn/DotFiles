@@ -10,6 +10,10 @@
 " (must be set before any other options)
 set nocompatible
 
+" Enable Pathogen
+" Easy vim plugin management
+execute pathogen#infect()
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                                                              "
