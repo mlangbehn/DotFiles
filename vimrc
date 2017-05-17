@@ -196,6 +196,10 @@ set showmatch
 " Show match for 2 tenths of a second
 set matchtime=2
 
+" Use vim-airline for status bar
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                                                              "
