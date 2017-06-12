@@ -7,6 +7,12 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 # Install airline status bar
 git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
 
+# Install ansible vim plugin
+git clone https://github.com/pearofducks/ansible-vim.git ~/.vim/bundle/ansible-vim
+
+# Install syntastic syntax checker
+git clone https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic
+
 # Check for existing ~/.vimrc and back it up if it exists
 if [ -f $HOME/.vimrc ]; then
     echo
