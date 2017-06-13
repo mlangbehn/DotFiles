@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mlangbehn/DotFiles.svg?branch=master)](https://travis-ci.org/mlangbehn/DotFiles)
+
 Purpose
 ====================
 
