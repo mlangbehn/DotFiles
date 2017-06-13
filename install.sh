@@ -1,74 +1,95 @@
-#!/bin/sh
+#!/bin/bash
 
 # Install pathogen for vim plugin management
-mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
+mkdir -p "$HOME"/.vim/autoload "$HOME"/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # Install airline status bar
-git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
+if [[ -d "$HOME"/.vim/bundle/vim-airline ]]; then
+    pushd "$HOME"/.vim/bundle/vim-airline
+    git checkout master
+    git fetch
+    git reset --hard origin/master
+else
+    git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
+fi
 
 # Install ansible vim plugin
-git clone https://github.com/pearofducks/ansible-vim.git ~/.vim/bundle/ansible-vim
+if [[ -d "$HOME"/.vim/bundle/ansible-vim ]]; then
+    pushd "$HOME"/.vim/bundle/ansible-vim
+    git checkout master
+    git fetch
+    git reset --hard origin/master
+else
+    git clone https://github.com/pearofducks/ansible-vim.git ~/.vim/bundle/ansible-vim
+fi
 
 # Install syntastic syntax checker
-git clone https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic
+if [[ -d "$HOME"/.vim/bundle/syntastic ]]; then
+    pushd "$HOME"/.vim/bundle/syntastic
+    git checkout master
+    git fetch
+    git reset --hard origin/master
+else
+    git clone https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic
+fi
 
 # Check for existing ~/.vimrc and back it up if it exists
-if [ -f $HOME/.vimrc ]; then
+if [[ -f "$HOME"/.vimrc ]]; then
     echo
     echo "Existing ~/.vimrc found."
-    echo "Backing it up to ~/.vimrc.bak"
+    echo "Backing it up to ~/.vimrc.backup"
     echo
-    cp $HOME/.vimrc{,.bak}
+    cp "$HOME"/.vimrc{,.backup}
 fi
-curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/vimrc > $HOME/.vimrc
+curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/vimrc > "$HOME"/.vimrc
 
 # Check for ~/.zsh, and create if it doesn't
-if [ ! -d $HOME/.zsh ]; then
+if [[ ! -d "$HOME"/.zsh ]]; then
     echo
     echo "No ~/.zsh found."
     echo "creating it."
     echo
-    mkdir $HOME/.zsh
+    mkdir "$HOME"/.zsh
 fi
 
 # Check for existing ~/.zsh/_git and back it up if it exists
-if [ -f $HOME/.zsh/_git ]; then
+if [[ -f "$HOME"/.zsh/_git ]]; then
     echo
     echo "Existing ~/.zsh/_git found."
-    echo "Backing it up to ~/.zsh/_git.bak"
+    echo "Backing it up to ~/.zsh/_git.backup"
     echo
-    cp $HOME/.zsh/_git{,.bak}
+    cp "$HOME"/.zsh/_git{,.backup}
 fi
-curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/zsh/_git > $HOME/.zsh/_git
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh > "$HOME"/.zsh/_git
 
 # Check for existing ~/.zsh/git-prompt.sh and back it up if it exists
-if [ -f $HOME/.zsh/git-prompt.sh ]; then
+if [[ -f "$HOME"/.zsh/git-prompt.sh ]]; then
     echo
     echo "Existing ~/.zsh/git-prompt.sh found."
-    echo "Backing it up to ~/.zsh/git-prompt.sh.bak"
+    echo "Backing it up to ~/.zsh/git-prompt.sh.backup"
     echo
-    cp $HOME/.zsh/git-prompt.sh{,.bak}
+    cp "$HOME"/.zsh/git-prompt.sh{,.backup}
 fi
-curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/zsh/git-prompt.sh > $HOME/.zsh/git-prompt.sh
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > "$HOME"/.zsh/git-prompt.sh
 
 # Check for existing ~/.zshrc and back it up if it exists
-if [ -f $HOME/.zshrc ]; then
+if [[ -f "$HOME"/.zshrc ]]; then
     echo
     echo "Existing ~/.zshrc found."
-    echo "Backing it up to ~/.zshrc.bak"
+    echo "Backing it up to ~/.zshrc.backup"
     echo
-    cp $HOME/.zshrc{,.bak}
+    cp "$HOME"/.zshrc{,.backup}
 fi
-curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/zshrc > $HOME/.zshrc
+curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/zshrc > "$HOME"/.zshrc
 
 echo
 echo "Installation complete."
 echo "If zsh is not your current default shell, and you want it to be,"
 echo "run the following:"
-echo "    chsh -s `which zsh`"
+echo "    chsh -s $(which zsh)"
 echo "Then, to switch to it, run:"
-echo "    `which zsh`"
+echo "    $(which zsh)"
 echo
 echo "If you are already running zsh, and you want to start using your"
 echo "new configuration, either logout and back in, or run:"
