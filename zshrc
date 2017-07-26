@@ -73,12 +73,11 @@ alias free='free -h'
 alias emacs='emacs -nw'
 
 # Git specific aliases
-#   gl uses an alias set in ~/.gitconfig to format output from git log
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit -s'
 alias gd='git diff'
-alias gl='git hist'
+alias gl='git log --graph --abbrev-commit --pretty="format:%C(auto)%C(auto,red)%h%Creset - %s %C(auto,green)(%cr)%Creset %C(auto,blue)<%an>%Creset %C(auto,yellow)[PGP Signature: %G?]%Creset"'
 alias go='git checkout'
 alias gs='git status'
 
