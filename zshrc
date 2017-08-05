@@ -30,9 +30,9 @@ fi
 # Set function path
 fpath=($HOME/.zsh $fpath)
 
-# If homebrew is installed, set PATH to default to GNU tools
+# If homebrew is installed, set PATH use the GNU tools and python from Brew
 if [ -f /usr/local/bin/brew ]; then
-	export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+	export PATH=/usr/local/opt/python/libexec/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
 	export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 fi
 
