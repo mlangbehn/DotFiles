@@ -1,3 +1,4 @@
+# vim: set ts=4 sw=4 expandtab:
 ################################################################################
 #                                                                              #
 #                                                                              #
@@ -32,8 +33,8 @@ fpath=($HOME/.zsh $fpath)
 
 # If homebrew is installed, set PATH use the GNU tools and python from Brew
 if [ -f /usr/local/bin/brew ]; then
-	export PATH=/usr/local/opt/python/libexec/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
-	export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+    export PATH=/usr/local/opt/python/libexec/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
+    export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 fi
 
 
@@ -45,7 +46,7 @@ fi
 
 # If vimcat is installed, use it instead of cat
 if [ -f /usr/bin/vimcat ]; then
-	alias cat='vimcat'
+    alias cat='vimcat'
 fi
 
 # cp should prompt before overwriting an existing file
@@ -57,7 +58,7 @@ alias df='df -h'
 
 # If vimdiff is installed, use it instead of diff
 if [ -f /usr/bin/vimdiff ]; then
-	alias diff='vimdiff'
+    alias diff='vimdiff'
 fi
 
 # du should always be human readable
@@ -114,8 +115,8 @@ if [ ! -d $DIRSTACKDIR ]; then
 fi
 DIRSTACKFILE="$DIRSTACKDIR/dirs"
 if [ -f $DIRSTACKFILE ] && [ $#dirstack -eq 0 ]; then
-  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-  [ -d $dirstack[1] ] && cd $dirstack[1]
+    dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+    [ -d $dirstack[1] ] && cd $dirstack[1]
 fi
 function chpwd() {
     emulate -L zsh
@@ -278,9 +279,9 @@ key[PageDown]=${terminfo[knp]}
 # Pressing [PAGE UP] or [PAGE DOWN] will only show previous commands
 # that start the same way
 [ -n "${key[PageUp]}"   ]  && bindkey  "${key[PageUp]}"    \
-         history-beginning-search-backward
+    history-beginning-search-backward
 [ -n "${key[PageDown]}" ]  && bindkey  "${key[PageDown]}"  \
-         history-beginning-search-forward
+    history-beginning-search-forward
 
 # Verify the terminal is in application mode when zle is active
 # Only then are the values from $terminfo valid
