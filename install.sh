@@ -20,7 +20,7 @@
 # Install required pip packages
 pip install -U pip
 curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/requirements.txt > /tmp/requirements.txt
-pip install -U -r /tmp/requirements.txt
+pip install -r /tmp/requirements.txt
 rm /tmp/requirements.txt
 
 # Install pathogen for vim plugin management

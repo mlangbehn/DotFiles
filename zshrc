@@ -379,3 +379,22 @@ function pip-update() {
 
 setopt correct
 SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color ($fg[blue]Y${reset_color}es, $fg[blue]N${reset_color}o, $fg[blue]A${reset_color}bort, $fg[blue]E${reset_color}dit) "
+
+
+################################################################################
+#                                                                              #
+#                             Login Greeting                                   #
+#                                                                              #
+################################################################################
+
+if [ -f $(which fortune) ]; then
+    if [ -f $(which cowthink) ]; then
+        if [ -f $(which lolcat) ]; then
+            fortune | cowthink | lolcat
+        else
+            fortune | cowthink
+        fi
+    else
+        fortune
+    fi
+fi
