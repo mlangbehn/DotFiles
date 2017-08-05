@@ -20,9 +20,25 @@ curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/install.sh | /b
 License
 ====================
 
-The files in this repository are released under the BSD 3-Clause License (see included LICENSE file). If you did not receive a copy of the license with this work, it can be found at: http://mlangbehn.github.io/BSD-3-Clause.html
+This repository has migrated from the BSD 3-Clause License to the GNU GPLv3.
 
-Author: Matt Langbehn  
+
+    Copyright (C) 2013-2017  Matthew Langbehn
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Matt Langbehn
 Contact: matthew.langbehn@gmail.com
 
 More Information
