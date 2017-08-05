@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# vim: set ts=4 sw=4 expandtab:
+
 #    Copyright (C) 2013-2017  Matthew Langbehn
 #
 #    This program is free software: you can redistribute it and/or modify
