@@ -126,18 +126,18 @@ alias t='$HOME/Dropbox/todo/todo.sh'
 # Changing directory behaves as pushd
 # Run 'ls' after changing directories
 DIRSTACKDIR="$HOME/.cache/zsh"
-if [ ! -d $DIRSTACKDIR ]; then
-    mkdir -p $DIRSTACKDIR
+if [ ! -d "$DIRSTACKDIR" ]; then
+    mkdir -p "$DIRSTACKDIR"
 fi
 DIRSTACKFILE="$DIRSTACKDIR/dirs"
-if [ -f $DIRSTACKFILE ] && [ $#dirstack -eq 0 ]; then
+if [ -f "$DIRSTACKFILE" ] && [ $#dirstack -eq 0 ]; then
     dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
     [ -d $dirstack[1] ] && cd $dirstack[1]
 fi
 function chpwd() {
     emulate -L zsh
     ls
-    print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+    print -l "$PWD" ${(u)dirstack} > "$DIRSTACKFILE"
 }
 
 DIRSTACKSIZE=20
@@ -323,7 +323,7 @@ autoload -U promptinit && promptinit
 autoload -U colors && colors
 
 # Set color of username to red is user is root, and cyan otherwise
-if [ `id -u` = 0 ]; then
+if [ "$(id -u)" = 0 ]; then
     NAME_COLOR=red
 else
     NAME_COLOR=cyan
@@ -341,7 +341,7 @@ WORKING_DIRECTORY_COLOR=yellow
 
 # Include information about git branch and status
 setopt PROMPT_SUBST
-source $HOME/.zsh/git-prompt.sh
+source "$HOME/.zsh/git-prompt.sh"
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
