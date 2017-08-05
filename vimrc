@@ -149,6 +149,7 @@ let g:sytastic_check_on_wq = 0
 let g:syntastic_ansible_checkers = ['ansible-lint']
 let g:syntastic_markdown_checkers = ['textlint']
 let g:syntastic_markdown_textlint_args = "--rule no-todo,no-empty-section,common-misspellings,alex,rousseau"
+let g:syntastic_python_checkers = ['flake8','pylint']
 let g:syntastic_yaml_checkers = ['yamllint']
 
 
