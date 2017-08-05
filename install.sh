@@ -17,6 +17,12 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Install required pip packages
+pip install -U pip
+curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/requirements.txt > /tmp/requirements.txt
+pip install -U -r /tmp/requirements.txt
+rm /tmp/requirements.txt
+
 # Install pathogen for vim plugin management
 mkdir -p "$HOME"/.vim/autoload "$HOME"/.vim/bundle
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim

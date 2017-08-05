@@ -1,0 +1,6 @@
+ansible-lint
+flake8
+pep8
+pylint
+virtualenvwrapper
+yamllint
