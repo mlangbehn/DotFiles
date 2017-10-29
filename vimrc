@@ -144,7 +144,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:sytastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 0
 
 let g:syntastic_ansible_checkers = ['ansible-lint']
 let g:syntastic_markdown_checkers = ['textlint']
@@ -190,6 +190,7 @@ filetype indent on
 " Specific filetype settings
 autocmd Filetype bash setlocal ts=4 sw=4 expandtab
 autocmd Filetype sh setlocal ts=4 sw=4 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 
 " Use UTF-8 encoding
 set encoding=utf8
@@ -206,6 +207,10 @@ set ffs=unix,dos,mac
 
 " Enable syntax highlighting
 syntax enable
+
+let g:ansible_attribute_highlight = "ab"
+let g:ansible_name_highlight = 'd'
+let g:ansible_extra_keywords_highlight = 1
 
 " Configure colors for a dark background
 set background=dark
