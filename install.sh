@@ -24,18 +24,16 @@ pip install -r /tmp/requirements.txt
 rm /tmp/requirements.txt
 
 # Install pathogen for vim plugin management
-mkdir -p "$HOME"/.vim/autoload "$HOME"/.vim/bundle
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-# Install airline status bar
-if [[ -d "$HOME"/.vim/bundle/vim-airline ]]; then
-    pushd "$HOME"/.vim/bundle/vim-airline
+mkdir -p "$HOME"/.vim/bundle
+if [[ -d "$HOME"/.vim/vim-pathogen ]]; then
+    pushd "$HOME"/.vim/vim-pathogen
     git checkout master
     git fetch
     git reset --hard origin/master
 else
-    git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
+    git clone git@github.com:tpope/vim-pathogen.git "$HOME"/.vim/vim-pathogen
 fi
+ln -sf "$HOME"/.vim/vim-pathogen/autoload "$HOME"/.vim/autoload
 
 # Install ansible vim plugin
 if [[ -d "$HOME"/.vim/bundle/ansible-vim ]]; then
@@ -44,7 +42,7 @@ if [[ -d "$HOME"/.vim/bundle/ansible-vim ]]; then
     git fetch
     git reset --hard origin/master
 else
-    git clone https://github.com/pearofducks/ansible-vim.git ~/.vim/bundle/ansible-vim
+    git clone https://github.com/pearofducks/ansible-vim.git "$HOME"/.vim/bundle/ansible-vim
 fi
 
 # Install syntastic syntax checker
@@ -54,7 +52,17 @@ if [[ -d "$HOME"/.vim/bundle/syntastic ]]; then
     git fetch
     git reset --hard origin/master
 else
-    git clone https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic
+    git clone https://github.com/vim-syntastic/syntastic.git "$HOME"/.vim/bundle/syntastic
+fi
+
+# Install vim airline status bar
+if [[ -d "$HOME"/.vim/bundle/vim-airline ]]; then
+    pushd "$HOME"/.vim/bundle/vim-airline
+    git checkout master
+    git fetch
+    git reset --hard origin/master
+else
+    git clone https://github.com/vim-airline/vim-airline "$HOME"/.vim/bundle/vim-airline
 fi
 
 # Check for existing ~/.vimrc and back it up if it exists
