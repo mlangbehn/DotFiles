@@ -49,7 +49,7 @@ fpath=($HOME/.zsh $fpath)
 
 # If homebrew is installed, set PATH use the GNU tools and python from Brew
 if [ -f /usr/local/bin/brew ]; then
-    export PATH=/usr/local/opt/python/libexec/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
+    export PATH=/usr/local/opt/python/libexec/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:$PATH
     export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 fi
 
@@ -61,7 +61,7 @@ fi
 ################################################################################
 
 # If vimcat is installed, use it instead of cat
-if [ -f /usr/bin/vimcat ]; then
+if [ -f /usr/local/bin/vimcat ]; then
     alias cat='vimcat'
 fi
 
@@ -73,7 +73,7 @@ alias cp='cp -i'
 alias df='df -h'
 
 # If vimdiff is installed, use it instead of diff
-if [ -f /usr/bin/vimdiff ]; then
+if [ -f /usr/local/bin/vimdiff ]; then
     alias diff='vimdiff'
 fi
 
@@ -90,9 +90,10 @@ alias free='free -h'
 alias emacs='emacs -nw'
 
 # Git specific aliases
+#   gc commits and signs with the PGP key defined by git config user.signingkey
 alias ga='git add'
 alias gb='git branch'
-alias gc='git commit -s'
+alias gc='git commit -sS'
 alias gd='git diff'
 alias gl='git log --graph --abbrev-commit --pretty="format:%C(auto)%C(auto,red)%h%Creset - %s %C(auto,green)(%cr)%Creset %C(auto,blue)<%an>%Creset %C(auto,yellow)[PGP Signature: %G?]%Creset"'
 alias go='git checkout'
