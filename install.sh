@@ -26,7 +26,7 @@ rm /tmp/requirements.txt
 # Install pathogen for vim plugin management
 mkdir -p "$HOME"/.vim/bundle
 if [[ -d "$HOME"/.vim/vim-pathogen ]]; then
-    pushd "$HOME"/.vim/vim-pathogen
+    pushd "$HOME"/.vim/vim-pathogen || exit 1
     git checkout master
     git fetch
     git reset --hard origin/master
@@ -37,7 +37,7 @@ ln -sf "$HOME"/.vim/vim-pathogen/autoload "$HOME"/.vim/autoload
 
 # Install ansible vim plugin
 if [[ -d "$HOME"/.vim/bundle/ansible-vim ]]; then
-    pushd "$HOME"/.vim/bundle/ansible-vim
+    pushd "$HOME"/.vim/bundle/ansible-vim || exit 1
     git checkout master
     git fetch
     git reset --hard origin/master
@@ -47,7 +47,7 @@ fi
 
 # Install syntastic syntax checker
 if [[ -d "$HOME"/.vim/bundle/syntastic ]]; then
-    pushd "$HOME"/.vim/bundle/syntastic
+    pushd "$HOME"/.vim/bundle/syntastic || exit 1
     git checkout master
     git fetch
     git reset --hard origin/master
@@ -57,7 +57,7 @@ fi
 
 # Install vim airline status bar
 if [[ -d "$HOME"/.vim/bundle/vim-airline ]]; then
-    pushd "$HOME"/.vim/bundle/vim-airline
+    pushd "$HOME"/.vim/bundle/vim-airline || exit 1
     git checkout master
     git fetch
     git reset --hard origin/master

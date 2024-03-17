@@ -1,0 +1,17 @@
+---
+version: 2.1
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/node:current
+    steps:
+      - checkout
+      - run: sudo apt-get install shellcheck
+      - run: npm install -g textlint textlint-plugin-markdown textlint-rule-no-todo textlint-rule-no-empty-section textlint-rule-common-misspellings textlint-rule-alex textlint-rule-rousseau
+      - run: find . -name '*.md' -print0 | xargs -n1 -0 textlint -f pretty-error --rule no-todo,no-empty-section,common-misspellings,alex
+      - run: find . -name '*.sh' -print0 | xargs -n1 -0 shellcheck -s bash
+
+workflows:
+  test:
+    jobs:
+      - build-and-test
