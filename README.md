@@ -1,3 +1,5 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/HRz9ELoqHLsxZYD33f9rQh/NCvsWMRvxPXckv7Awf3XCe/tree/master.svg?style=svg&circle-token=CCIPRJ_CxDoTzyaoqNCzYZYJkptEn_cc9fa6e1bfa09a4882f44e5266eb4c401c529558)](https://dl.circleci.com/status-badge/redirect/circleci/HRz9ELoqHLsxZYD33f9rQh/NCvsWMRvxPXckv7Awf3XCe/tree/master)
+
 Purpose
 ====================
 
