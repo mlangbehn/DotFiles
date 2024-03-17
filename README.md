@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/mlangbehn/DotFiles.svg?branch=master)](https://travis-ci.org/mlangbehn/DotFiles)
-
 Purpose
 ====================
 
@@ -7,7 +5,7 @@ The purpose of this repository is to force me to tidy up my configuration files.
 
 I have never been satisfied with other dotfiles people have published. I have read through a selection of them and used them -- and other documentation -- as templates to base my own off of.
 
-I hope that these files may be useful to others (whether they use my versions, or just use them as reference)!
+I hope that these files may be useful to others (whether they use my versions, or use them as reference)!
 
 Installation
 ====================
@@ -23,7 +21,7 @@ License
 This repository has migrated from the BSD 3-Clause License to the GNU GPLv3.
 
 
-    Copyright (C) 2013-2017  Matthew Langbehn
+    Copyright (C) 2013-2024  Matthew Langbehn
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -45,9 +43,9 @@ More Information
 ====================
 
 ## vim
-Official vim documentation can be found at:  
+Official vim documentation can be found at:
 http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
 ## zsh
-Official zsh documentation can be found at:  
+Official zsh documentation can be found at:
 http://zsh.sourceforge.net/Doc/Release/zsh_toc.html
