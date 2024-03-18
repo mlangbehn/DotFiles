@@ -163,6 +163,9 @@ setopt pushdsilent
 #                                                                              #
 ################################################################################
 
+# Git completion script
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+
 # Enable the new completion system
 zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit
