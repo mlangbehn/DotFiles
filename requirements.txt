@@ -1,7 +1,0 @@
-ansible-lint
-flake8
-lolcat
-pep8
-pylint
-virtualenvwrapper
-yamllint

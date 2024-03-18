@@ -18,10 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Install required pip packages
-pip install -U pip
-curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/requirements.txt > /tmp/requirements.txt
-pip install -r /tmp/requirements.txt
-rm /tmp/requirements.txt
+/usr/local/bin/python3 -m pip install pynvim --break-system-packages
 
 # Install pathogen for vim plugin management
 mkdir -p "$HOME"/.vim/bundle
@@ -63,6 +60,16 @@ if [[ -d "$HOME"/.vim/bundle/vim-airline ]]; then
     git reset --hard origin/master
 else
     git clone https://github.com/vim-airline/vim-airline "$HOME"/.vim/bundle/vim-airline
+fi
+
+# Install vim-ai, OpenAI assistant for vim
+if [[ -d "$HOME"/.vim/bundle/vim-ai ]]; then
+    pushd "$HOME"/.vim/bundle/vim-ai || exit 1
+    git checkout master
+    git fetch
+    git reset --hard origin/master
+else
+    git clone https://github.com/vim-airline/vim-ai "$HOME"/.vim/bundle/vim-ai
 fi
 
 # Check for existing ~/.vimrc and back it up if it exists
