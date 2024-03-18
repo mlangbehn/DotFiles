@@ -37,6 +37,7 @@
 # Set the default editor
 if [ -f /usr/local/bin/nvim ]; then
     export EDITOR=nvim
+    alias vim='echo ...vim replaced by nvim on this system... && sleep 5 && nvim'
 else
     export EDITOR=vim
 fi
