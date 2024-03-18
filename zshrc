@@ -1,6 +1,6 @@
 # vim: set ts=4 sw=4 expandtab:
 
-#    Copyright (C) 2013-2017  Matthew Langbehn
+#    Copyright (C) 2013-2024 Matthew Langbehn
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
