@@ -44,6 +44,10 @@ Contact: matthew.langbehn@gmail.com
 More Information
 ====================
 
+## nvim
+Official neovim documentation can be found at:
+https://neovim.io/doc/
+
 ## vim
 Official vim documentation can be found at:
 http://vimdoc.sourceforge.net/htmldoc/usr_toc.html

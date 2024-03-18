@@ -35,10 +35,16 @@
 #       before all others.
 
 # Set the default editor
-export EDITOR=vim
+if [ -f /usr/local/bin/nvim ]; then
+    export EDITOR=nvim
+else
+    export EDITOR=vim
+fi
 
 # Set the default pager
-if [ -f /usr/bin/vimpager ]; then
+if [ -f /usr/local/bin/nvimpager ]; then
+    export PAGER=nvimpager
+elif [ -f /usr/local/bin/vimpager ]; then
     export PAGER=vimpager
 else
     export PAGER=less
