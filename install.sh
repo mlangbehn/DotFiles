@@ -84,6 +84,16 @@ if [[ ! -d "$HOME"/.zsh ]]; then
     mkdir "$HOME"/.zsh
 fi
 
+# Check for existing ~/.zsh/git-completion.bash and back it up if it exists
+if [[ -f "$HOME"/.zsh/git-completion.bash ]]; then
+    echo
+    echo "Existing ~/.zsh/git-completion.bash found."
+    echo "Backing it up to ~/.zsh/git-completion.bash.backup"
+    echo
+    cp "$HOME"/.zsh/git-completion.bash{,.backup}
+fi
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > "$HOME"/.zsh/git-completion.bash
+
 # Check for existing ~/.zsh/_git and back it up if it exists
 if [[ -f "$HOME"/.zsh/_git ]]; then
     echo
