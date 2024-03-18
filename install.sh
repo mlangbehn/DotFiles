@@ -75,6 +75,25 @@ if [[ -f "$HOME"/.vimrc ]]; then
 fi
 curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/vimrc > "$HOME"/.vimrc
 
+# Check for ~/.config/nvim, and create if it doesn't
+if [[ ! -d "$HOME"/.config/nvim ]]; then
+    echo
+    echo "No ~/.config/nvim found."
+    echo "creating it."
+    echo
+    mkdir -p "$HOME"/.config/nvim
+fi
+
+# Check for existing ~/.comfig/nvim/init.vim and back it up if it exists
+if [[ -f "$HOME"/.config/nvim/init.vim ]]; then
+    echo
+    echo "Existing ~/.config/nvim/init.vim found."
+    echo "Backing it up to ~/.config/nvim/init.vim.backup"
+    echo
+    cp "$HOME"/.config/nvim/init.vim{,.backup}
+fi
+curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/config/nvim/init.vim > "$HOME"/.config/nvim/init.vim
+
 # Check for ~/.zsh, and create if it doesn't
 if [[ ! -d "$HOME"/.zsh ]]; then
     echo
